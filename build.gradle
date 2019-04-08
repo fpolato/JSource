@@ -33,8 +33,9 @@ apply plugin: 'java'
 apply plugin: 'eclipse-wtp'
 
 ext {
-    SPRING_VERSION = '4+'
-    SPRING_WS_VERSION = '2+'
+	JFOENIX_VERSION = '8+'
+    //SPRING_VERSION = '4+'
+    //SPRING_WS_VERSION = '2+'
 }
 
 // JDK 8
@@ -51,10 +52,13 @@ repositories {
 
 dependencies {
 	
+	//JFoenix
+	compile group: 'com.jfoenix', name: 'jfoenix', version: JFOENIX_VERSION
+	
 	// Spring WS
-    compile group: 'org.springframework.ws', name: 'spring-ws-core', version: SPRING_WS_VERSION
+    //compile group: 'org.springframework.ws', name: 'spring-ws-core', version: SPRING_WS_VERSION
     
      // Test
-    testCompile group: 'org.springframework', name: 'spring-test', version: SPRING_VERSION
-    testCompile group: 'org.junit.platform', name: 'junit-platform-runner', version: '1.0.0-M4'
+    //testCompile group: 'org.springframework', name: 'spring-test', version: SPRING_VERSION
+    //testCompile group: 'org.junit.platform', name: 'junit-platform-runner', version: '1.0.0-M4'
 }

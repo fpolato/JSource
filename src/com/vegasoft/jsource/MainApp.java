@@ -2,10 +2,12 @@ package com.vegasoft.jsource;
 
 import java.io.IOException;
 
+import com.vegasoft.jsource.view.TabPaneController;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.control.SplitPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -29,8 +31,8 @@ public class MainApp extends Application {
 	    //this.primaryStage.getIcons().add(new Image("file:resources/images/address_book_32.png"));
 
 		initRootLayout();
-
-		showRepositoryOverview();
+		
+		initTabPane();
 	}
 
 	/**
@@ -51,29 +53,62 @@ public class MainApp extends Application {
 			e.printStackTrace();
 		}
 	}
-
-	/**
-	 * Shows the person overview inside the root layout.
-	 */
-	public void showRepositoryOverview() {
+	
+	public void initTabPane() {
 		try {
-			// Load person overview.
+			// Load tab pane
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(MainApp.class.getResource("view/RepositoryOverview.fxml"));
-			AnchorPane repositoryOverview = (AnchorPane) loader.load();
-
-			// Set person overview into the center of root layout.
-			rootLayout.setCenter(repositoryOverview);
-
+			loader.setLocation(MainApp.class.getResource("view/TabPane.fxml"));
+			BorderPane tabPane = (BorderPane) loader.load();
+			
+			// Set tab pane into the center of root layoyt
+			rootLayout.setCenter(tabPane);
+			
 			// Give the controller access to the main app.
-			//PersonOverviewController controller = loader.getController();
-			//controller.setMainApp(this);
+			TabPaneController controller = loader.getController();
+			controller.setMainApp(this);
 			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 	
+	public SplitPane initRepositoryInit() {
+		SplitPane repositoryInit = null;
+		try {
+			// Load repository init
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("view/RepositoryInit.fxml"));
+			repositoryInit = (SplitPane) loader.load();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return repositoryInit;
+	}
+
+//	/**
+//	 * Shows the person overview inside the root layout.
+//	 */
+//	public void showRepositoryOverview() {
+//		try {
+//			// Load person overview.
+//			FXMLLoader loader = new FXMLLoader();
+//			loader.setLocation(MainApp.class.getResource("view/RepositoryOverview.fxml"));
+//			AnchorPane repositoryOverview = (AnchorPane) loader.load();
+//
+//			// Set person overview into the center of root layout.
+//			rootLayout.setCenter(repositoryOverview);
+//
+//			// Give the controller access to the main app.
+//			//PersonOverviewController controller = loader.getController();
+//			//controller.setMainApp(this);
+//			
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//	}
+//	
 	/**
 	 * Returns the main stage.
 	 * @return

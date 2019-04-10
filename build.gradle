@@ -35,6 +35,7 @@ apply plugin: 'eclipse-wtp'
 ext {
 	JFOENIX_VERSION = '8+'
 	FONTAWESOMEFX_VERSION = '8+'
+	JGIT_VERSION = '4+'
     //SPRING_VERSION = '4+'
     //SPRING_WS_VERSION = '2+'
 }
@@ -52,12 +53,15 @@ repositories {
 }
 
 dependencies {
-	
+
 	// JFoenix
 	compile group: 'com.jfoenix', name: 'jfoenix', version: JFOENIX_VERSION
 	
 	// FontAwesomeFX
 	compile group: 'de.jensd', name: 'fontawesomefx', version: FONTAWESOMEFX_VERSION
+
+	// JGit
+	compile group: 'org.eclipse.jgit', name: 'org.eclipse.jgit', version: JGIT_VERSION
 	
 	// Spring WS
     //compile group: 'org.springframework.ws', name: 'spring-ws-core', version: SPRING_WS_VERSION

@@ -7,17 +7,16 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.FlowPane;
 
-public class TabPaneController {
+public class TabPaneController extends BaseController {
 	@FXML private TabPane tabPane;
-	
-	// Reference to the main application
-	private MainApp mainApp;
 	
 	/**
 	 * The constructor.
 	 * The constructor is called before the initialize() method.
 	 */
-	public TabPaneController() { }
+	public TabPaneController() {
+		super();
+	}
 	
 	/**
      * Initializes the controller class. This method is automatically called
@@ -32,7 +31,7 @@ public class TabPaneController {
      * @param mainApp
      */
     public void setMainApp(MainApp mainApp) {
-        this.mainApp = mainApp;
+        super.setMainApp(mainApp);
         initTabs();
     }
     
@@ -41,7 +40,7 @@ public class TabPaneController {
     	Tab repositoryInitTab = new Tab();
     	repositoryInitTab.setText("New Repository");
     	
-    	FlowPane repositoryInit = (FlowPane) mainApp.initRepositoryInit();
+    	FlowPane repositoryInit = (FlowPane) getMainApp().initRepositoryInit();
 		repositoryInitTab.setContent(repositoryInit);
 		
 		tabPane.getTabs().add(repositoryInitTab);

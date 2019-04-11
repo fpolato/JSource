@@ -6,8 +6,8 @@ import com.vegasoft.jsource.view.TabPaneController;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.SplitPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -73,13 +73,13 @@ public class MainApp extends Application {
 		}
 	}
 	
-	public SplitPane initRepositoryInit() {
-		SplitPane repositoryInit = null;
+	public Node initRepositoryInit() {
+		Node repositoryInit = null;
 		try {
 			// Load repository init
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(MainApp.class.getResource("view/RepositoryInit.fxml"));
-			repositoryInit = (SplitPane) loader.load();
+			repositoryInit = (Node) loader.load();
 			
 		} catch (IOException e) {
 			e.printStackTrace();

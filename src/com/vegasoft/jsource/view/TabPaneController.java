@@ -3,9 +3,9 @@ package com.vegasoft.jsource.view;
 import com.vegasoft.jsource.MainApp;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.SplitPane;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import javafx.scene.layout.FlowPane;
 
 public class TabPaneController {
 	@FXML private TabPane tabPane;
@@ -41,7 +41,7 @@ public class TabPaneController {
     	Tab repositoryInitTab = new Tab();
     	repositoryInitTab.setText("New Repository");
     	
-    	SplitPane repositoryInit = mainApp.initRepositoryInit();
+    	FlowPane repositoryInit = (FlowPane) mainApp.initRepositoryInit();
 		repositoryInitTab.setContent(repositoryInit);
 		
 		tabPane.getTabs().add(repositoryInitTab);

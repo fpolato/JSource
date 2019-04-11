@@ -16,4 +16,10 @@ public class RepositoryInitController extends BaseController {
      */
 	@FXML
 	private void initialize() { }
+
+	@Override
+	protected void onControllerLoadEnd() {
+		toolbar.prefWidthProperty().bind(getMainApp().getPrimaryStage().widthProperty());
+	}
+	
 }

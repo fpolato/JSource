@@ -2,7 +2,7 @@ package com.vegasoft.jsource.view;
 
 import com.vegasoft.jsource.MainApp;
 
-public class BaseController {
+public abstract class BaseController {
 	// Reference to the main application
 	private MainApp mainApp;
 	
@@ -15,6 +15,7 @@ public class BaseController {
      */
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
+        onControllerLoadEnd();
     }
     
     /**
@@ -24,4 +25,6 @@ public class BaseController {
     public MainApp getMainApp() {
     	return mainApp;
     }
+    
+    protected abstract void onControllerLoadEnd();
 }

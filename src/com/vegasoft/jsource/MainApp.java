@@ -2,6 +2,7 @@ package com.vegasoft.jsource;
 
 import java.io.IOException;
 
+import com.vegasoft.jsource.view.RepositoryInitController;
 import com.vegasoft.jsource.view.TabPaneController;
 
 import javafx.application.Application;
@@ -73,6 +74,8 @@ public class MainApp extends Application {
 		}
 	}
 	
+	
+	// TODO: è giusto che questo si trovi qui?
 	public Node initRepositoryInit() {
 		Node repositoryInit = null;
 		try {
@@ -80,6 +83,10 @@ public class MainApp extends Application {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(MainApp.class.getResource("view/RepositoryInit.fxml"));
 			repositoryInit = (Node) loader.load();
+			
+			// Give the controller access to the main app.
+			RepositoryInitController controller = loader.getController();
+			controller.setMainApp(this);
 			
 		} catch (IOException e) {
 			e.printStackTrace();

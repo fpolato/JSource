@@ -32,17 +32,21 @@ public class TabPaneController extends BaseController {
      */
     public void setMainApp(MainApp mainApp) {
         super.setMainApp(mainApp);
-        initTabs();
     }
-    
-    private void initTabs() {
-    	// Create a new tab where RepositoryInit is loaded
-    	Tab repositoryInitTab = new Tab();
-    	repositoryInitTab.setText("New Repository");
-    	
-    	FlowPane repositoryInit = (FlowPane) getMainApp().initRepositoryInit();
+
+	@Override
+	protected void onControllerLoadEnd() {
+		initTabs();
+	}
+	
+	private void initTabs() {
+		// Create a new tab where RepositoryInit is loaded
+		Tab repositoryInitTab = new Tab();
+		repositoryInitTab.setText("New Repository");
+		
+		FlowPane repositoryInit = (FlowPane) getMainApp().initRepositoryInit();
 		repositoryInitTab.setContent(repositoryInit);
 		
 		tabPane.getTabs().add(repositoryInitTab);
-    }
+	}
 }

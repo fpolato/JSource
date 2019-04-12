@@ -1,7 +1,7 @@
 package com.vegasoft.jsource.view;
 
-import com.vegasoft.jsource.MainApp;
 import com.vegasoft.jsource.exceptions.JSourceIOException;
+import com.vegasoft.jsource.utils.NodeUtils;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Tab;
@@ -26,17 +26,8 @@ public class TabPaneController extends BaseController {
 	@FXML
 	private void initialize() { }
 	
-	/**
-     * Is called by the main application to give a reference back to itself.
-     * 
-     * @param mainApp
-     */
-    public void setMainApp(MainApp mainApp) {
-        super.setMainApp(mainApp);
-    }
-
 	@Override
-	protected void onControllerLoadEnd() {
+	public void onControllerLoadEnd() {
 		initTabs();
 	}
 	
@@ -47,7 +38,7 @@ public class TabPaneController extends BaseController {
 		
 //		FlowPane repositoryInit = (FlowPane) getMainApp().initRepositoryInit();
 		try {
-			FlowPane repositoryInit = (FlowPane) getMainApp().getNodeUtils().initNode("RepositoryInit");
+			FlowPane repositoryInit = (FlowPane) NodeUtils.initNode("RepositoryInit");
 			repositoryInitTab.setContent(repositoryInit);
 		} catch(JSourceIOException e) {
 			e.printStackTrace();

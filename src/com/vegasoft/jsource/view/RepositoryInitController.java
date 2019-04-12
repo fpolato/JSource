@@ -1,5 +1,7 @@
 package com.vegasoft.jsource.view;
 
+import com.vegasoft.jsource.MainApp;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.ToolBar;
 
@@ -18,8 +20,8 @@ public class RepositoryInitController extends BaseController {
 	private void initialize() { }
 
 	@Override
-	protected void onControllerLoadEnd() {
-		toolbar.prefWidthProperty().bind(getMainApp().getPrimaryStage().widthProperty());
+	public void onControllerLoadEnd() {
+		toolbar.prefWidthProperty().bind(MainApp.getInstance().getPrimaryStage().widthProperty());
 	}
 	
 }

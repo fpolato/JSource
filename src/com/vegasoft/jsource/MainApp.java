@@ -13,21 +13,33 @@ import javafx.stage.Stage;
 
 public class MainApp extends Application {
 
+	private static MainApp instance;
 	private Stage primaryStage;
 	private BorderPane rootLayout;
-	private NodeUtils nodeUtils;
 
-	/**
-	 * Constructor
-	 */
 	public MainApp() {
+		super();
+	    synchronized(MainApp.class){
+	        if(instance != null) {
+	        	throw new UnsupportedOperationException(getClass()+" is singleton but constructor called more than once");
+	        }
+	                
+	        instance = this;
+	    }
+	}
+	
+	public static MainApp getInstance() {
+		if(instance == null) {
+			instance = new MainApp();
+		}
+		
+		return instance;
 	}
 
 	@Override
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
 		this.primaryStage.setTitle("JSource");
-		this.nodeUtils = new NodeUtils(this);
 		
 		// Set the application icon.
 	    //this.primaryStage.getIcons().add(new Image("file:resources/images/address_book_32.png"));
@@ -36,7 +48,7 @@ public class MainApp extends Application {
 		
 		try {
 			// Inizializzo il TabPane principale
-			BorderPane tabPane = (BorderPane) nodeUtils.initNode("TabPane");
+			BorderPane tabPane = (BorderPane) NodeUtils.initNode("TabPane");
 			rootLayout.setCenter(tabPane);
 		} catch(JSourceIOException e) {
 			e.printStackTrace();
@@ -49,7 +61,7 @@ public class MainApp extends Application {
 	public void initRootLayout() {
 		try {
 			// Load root layout from fxml file.
-			FXMLLoader loader = new FXMLLoader();
+			FXMLLoader loader = new JSourceFXMLLoader();
 			loader.setLocation(MainApp.class.getResource("view/RootLayout.fxml"));
 			rootLayout = (BorderPane) loader.load();
 
@@ -60,10 +72,6 @@ public class MainApp extends Application {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
-	
-	public NodeUtils getNodeUtils() {
-		return nodeUtils;
 	}
 	
 	/**

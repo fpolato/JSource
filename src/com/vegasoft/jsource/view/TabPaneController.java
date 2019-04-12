@@ -1,6 +1,7 @@
 package com.vegasoft.jsource.view;
 
 import com.vegasoft.jsource.MainApp;
+import com.vegasoft.jsource.exceptions.JSourceIOException;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Tab;
@@ -44,8 +45,13 @@ public class TabPaneController extends BaseController {
 		Tab repositoryInitTab = new Tab();
 		repositoryInitTab.setText("New Repository");
 		
-		FlowPane repositoryInit = (FlowPane) getMainApp().initRepositoryInit();
-		repositoryInitTab.setContent(repositoryInit);
+//		FlowPane repositoryInit = (FlowPane) getMainApp().initRepositoryInit();
+		try {
+			FlowPane repositoryInit = (FlowPane) getMainApp().getNodeUtils().initNode("RepositoryInit");
+			repositoryInitTab.setContent(repositoryInit);
+		} catch(JSourceIOException e) {
+			e.printStackTrace();
+		}
 		
 		tabPane.getTabs().add(repositoryInitTab);
 	}

@@ -2,12 +2,11 @@ package com.vegasoft.jsource;
 
 import java.io.IOException;
 
-import com.vegasoft.jsource.view.RepositoryInitController;
-import com.vegasoft.jsource.view.TabPaneController;
+import com.vegasoft.jsource.exceptions.JSourceIOException;
+import com.vegasoft.jsource.utils.NodeUtils;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -16,6 +15,7 @@ public class MainApp extends Application {
 
 	private Stage primaryStage;
 	private BorderPane rootLayout;
+	private NodeUtils nodeUtils;
 
 	/**
 	 * Constructor
@@ -27,13 +27,20 @@ public class MainApp extends Application {
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
 		this.primaryStage.setTitle("JSource");
+		this.nodeUtils = new NodeUtils(this);
 		
 		// Set the application icon.
 	    //this.primaryStage.getIcons().add(new Image("file:resources/images/address_book_32.png"));
 
 		initRootLayout();
 		
-		initTabPane();
+		try {
+			// Inizializzo il TabPane principale
+			BorderPane tabPane = (BorderPane) nodeUtils.initNode("TabPane");
+			rootLayout.setCenter(tabPane);
+		} catch(JSourceIOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -55,67 +62,10 @@ public class MainApp extends Application {
 		}
 	}
 	
-	public void initTabPane() {
-		try {
-			// Load tab pane
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(MainApp.class.getResource("view/TabPane.fxml"));
-			BorderPane tabPane = (BorderPane) loader.load();
-			
-			// Set tab pane into the center of root layoyt
-			rootLayout.setCenter(tabPane);
-			
-			// Give the controller access to the main app.
-			TabPaneController controller = loader.getController();
-			controller.setMainApp(this);
-			
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+	public NodeUtils getNodeUtils() {
+		return nodeUtils;
 	}
 	
-	
-	// TODO: è giusto che questo si trovi qui?
-	public Node initRepositoryInit() {
-		Node repositoryInit = null;
-		try {
-			// Load repository init
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(MainApp.class.getResource("view/RepositoryInit.fxml"));
-			repositoryInit = (Node) loader.load();
-			
-			// Give the controller access to the main app.
-			RepositoryInitController controller = loader.getController();
-			controller.setMainApp(this);
-			
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return repositoryInit;
-	}
-
-//	/**
-//	 * Shows the person overview inside the root layout.
-//	 */
-//	public void showRepositoryOverview() {
-//		try {
-//			// Load person overview.
-//			FXMLLoader loader = new FXMLLoader();
-//			loader.setLocation(MainApp.class.getResource("view/RepositoryOverview.fxml"));
-//			AnchorPane repositoryOverview = (AnchorPane) loader.load();
-//
-//			// Set person overview into the center of root layout.
-//			rootLayout.setCenter(repositoryOverview);
-//
-//			// Give the controller access to the main app.
-//			//PersonOverviewController controller = loader.getController();
-//			//controller.setMainApp(this);
-//			
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//	}
-//	
 	/**
 	 * Returns the main stage.
 	 * @return

@@ -18,7 +18,7 @@ public class NodeUtils {
 	private static final String DEFAULT_NODE_LOCATION = "view";
 	
 	/**
-	 * Initialize a Node and attach the corrisponding controller.
+	 * Initialize a Node and attach the corresponding controller.
 	 * @param nodeName
 	 * @return
 	 * @throws IOException

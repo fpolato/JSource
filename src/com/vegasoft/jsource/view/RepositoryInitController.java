@@ -1,6 +1,7 @@
 package com.vegasoft.jsource.view;
 
 import com.vegasoft.jsource.MainApp;
+import com.vegasoft.jsource.core.BaseController;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.ToolBar;

@@ -1,5 +1,6 @@
 package com.vegasoft.jsource.view;
 
+import com.vegasoft.jsource.core.BaseController;
 import com.vegasoft.jsource.exceptions.JSourceIOException;
 import com.vegasoft.jsource.utils.NodeUtils;
 

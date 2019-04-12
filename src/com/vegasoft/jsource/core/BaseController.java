@@ -1,4 +1,4 @@
-package com.vegasoft.jsource.view;
+package com.vegasoft.jsource.core;
 
 public abstract class BaseController {
 	

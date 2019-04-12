@@ -1,11 +1,19 @@
-package com.vegasoft.jsource;
+package com.vegasoft.jsource.core;
 
 import java.io.IOException;
 
-import com.vegasoft.jsource.view.BaseController;
+import com.vegasoft.jsource.MainApp;
 
 import javafx.fxml.FXMLLoader;
 
+/**
+ * Extends the {@link FXMLLoader} standard class and handle the correct
+ * {@link BaseController} initialization.
+ * This class is fundamental to guarantee the correct {@link MainApp}s 
+ * working as singleton.
+ * @author fabio.polato
+ *
+ */
 public class JSourceFXMLLoader extends FXMLLoader {
 	
 	@Override

@@ -2,6 +2,7 @@ package com.vegasoft.jsource;
 
 import java.io.IOException;
 
+import com.vegasoft.jsource.core.JSourceFXMLLoader;
 import com.vegasoft.jsource.exceptions.JSourceIOException;
 import com.vegasoft.jsource.utils.NodeUtils;
 

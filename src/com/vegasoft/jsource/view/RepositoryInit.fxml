@@ -9,9 +9,9 @@
 
 <FlowPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vegasoft.jsource.view.RepositoryInitController">
    <children>
-      <ToolBar fx:id="toolbar" prefHeight="40.0">
+      <ToolBar fx:id="toolbar" prefHeight="40.0" styleClass="main-button-bar" stylesheets="@DefaultTheme.css">
         <items>
-          <Button contentDisplay="TOP" mnemonicParsing="false" text="Local">
+          <Button contentDisplay="TOP" mnemonicParsing="false" styleClass="main-button-bar-button" stylesheets="@DefaultTheme.css" text="Local">
                <graphic>
                   <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -19,8 +19,7 @@
                      </image>
                   </ImageView>
                </graphic></Button>
-            <Separator orientation="VERTICAL" />
-            <Button contentDisplay="TOP" mnemonicParsing="false" text="Remote">
+            <Button contentDisplay="TOP" mnemonicParsing="false" styleClass="main-button-bar-button" stylesheets="@DefaultTheme.css" text="Remote">
                <graphic>
                   <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -28,6 +27,16 @@
                      </image>
                   </ImageView>
                </graphic></Button>
+            <Separator orientation="VERTICAL" styleClass="main-button-bar-separator" stylesheets="@DefaultTheme.css" />
+            <Button contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" styleClass="main-button-bar-button" stylesheets="@DefaultTheme.css" text="Local">
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../resources/icons/icon-desktop-48.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
         </items>
       </ToolBar>
    </children>

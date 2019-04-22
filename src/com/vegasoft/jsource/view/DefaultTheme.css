@@ -2,7 +2,19 @@
     -fx-padding: 0 0 0 1;
 }
 
-.main-button-bar button {
-	height: 50px;
-	width: 50px
+.main-button-bar {
+	-fx-padding: 0;
+}
+
+.main-button-bar-button {
+	-fx-pref-height: 60px;
+    -fx-pref-width: 60px;
+    -fx-font-size: 10px;
+    -fx-border-width: 0 0 0 0;
+    -fx-background-color: transparent;
+}
+
+.main-button-bar-separator {
+	-fx-max-height: 50px;
+	-fx-padding: 0 10 0 10;
 }
